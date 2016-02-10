@@ -36,11 +36,12 @@ PRIMARY KEY (`dimension_id`)
 ;
 
 CREATE TABLE `nutrition_recipe_product` (
+`recipe_provision_id`  int NOT NULL ,
 `recipe_id`  int NOT NULL ,
 `product_id`  int NOT NULL ,
 `qty`  float NULL ,
 `dimension_id`  int NULL ,
-PRIMARY KEY (`recipe_id`, `product_id`)
+PRIMARY KEY (`recipe_provision_id`)
 )
 ;
 
@@ -57,7 +58,7 @@ PRIMARY KEY (`provision_id`)
 CREATE TABLE `nutrition_dish` (
 `dish_id`  int NOT NULL ,
 `recipe_id`  int NOT NULL ,
-`client_id`  int NULL ,
+`user_id`  int NULL ,
 `qty`  float NULL ,
 `date_made`  datetime NULL ON UPDATE CURRENT_TIMESTAMP ,
 PRIMARY KEY (`dish_id`)
@@ -65,11 +66,22 @@ PRIMARY KEY (`dish_id`)
 ;
 
 CREATE TABLE `nutrition_history` (
+`history_id`  int NOT NULL ,
 `dish_id`  int NOT NULL ,
 `qty`  float NULL ,
-`datetime`  datetime NULL ON UPDATE CURRENT_TIMESTAMP 
+`datetime`  datetime NULL ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`history_id`)
 )
 ;
+CREATE TABLE `user` (
+`user_id`  int NOT NULL ,
+`name`  varchar(255) NOT NULL ,
+`email`  varchar(255) NOT NULL ,
+`password`  varchar(255) NULL ,
+PRIMARY KEY (`user_id`)
+)
+;
+
 
 
 

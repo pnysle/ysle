@@ -66,6 +66,7 @@ public class RepositoryTestConfig implements TransactionManagementConfigurer {
 			lsfb.setPackagesToScan("com.yourslife"); // looks only entities
 			Properties props = new Properties();
 			props.setProperty("dialect", "org.hibernate.dialect.H2Dialect");
+			props.setProperty("hibernate.show_sql","true");
 			lsfb.setHibernateProperties(props);
 			lsfb.afterPropertiesSet();
 			SessionFactory object = lsfb.getObject();

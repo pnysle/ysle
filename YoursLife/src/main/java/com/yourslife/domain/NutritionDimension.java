@@ -8,17 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="nutrition_dimension")
+@Table(name = "nutrition_dimension")
 public class NutritionDimension {
 
-	private NutritionDimension(){}
-	
+	public NutritionDimension() {
+	}
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="dimension_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "dimension_id")
 	private int dimensionId;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
 
 	public int getDimensionId() {
@@ -35,5 +36,10 @@ public class NutritionDimension {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "NutritionDimension [dimensionId=" + dimensionId + ", name=" + name + "]";
 	}
 }

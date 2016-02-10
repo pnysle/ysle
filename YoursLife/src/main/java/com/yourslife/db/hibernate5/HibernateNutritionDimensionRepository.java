@@ -14,30 +14,27 @@ import com.yourslife.domain.NutritionDimension;
 
 @Repository
 @Transactional
-public class HibernateNutritionDimensionRepository implements NutritionDimensionRepository{
+public class HibernateNutritionDimensionRepository implements NutritionDimensionRepository {
 
 	private SessionFactory sessionFactory;
 
-//	@Autowired
 	@Inject
 	public HibernateNutritionDimensionRepository(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	private Session currentSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	
+
 	@Override
 	public NutritionDimension findOne(long id) {
-		return (NutritionDimension) currentSession().get(NutritionDimension.class, id); 
+		return (NutritionDimension) currentSession().get(NutritionDimension.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<NutritionDimension> findAll() {
-		return (List<NutritionDimension>) currentSession() 
-				.createCriteria(NutritionDimension.class).list(); 
+		return (List<NutritionDimension>) currentSession().createCriteria(NutritionDimension.class).list();
 	}
-
 }
